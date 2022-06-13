@@ -12,7 +12,12 @@ public class database
 
     }
 
-    public static void RunBasicCMD()
+    public static void RunBasicCMD(string command)
+    {
+
+    }
+
+    public static void RunDataReader(string command)
     {
 
     }
