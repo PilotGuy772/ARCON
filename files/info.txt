@@ -1,0 +1,62 @@
+  ARCON help requested with help command.
+  
+  
+  |[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]|
+  |       _______          ___________   |
+  |      /  ___  \         |    ____  \  |
+  |     /  /   \  \        |   |____| |  |
+  |    /  /_____\  \       |   _   ___/  |
+  |   /  _________  \      |  | \  \     |
+  |  /  /         \  \     |  |  \  \    |
+  | /__/           \__\    \__/   \__\   |
+  |                                      |
+  |                                      |
+  |                                      |
+  |      ______     _______     _        |
+  |     /          /      /    / |   /   |
+  |    /          /      /    /  |  /    |
+  |   /______    /______/    /   |_/     |
+  |                                      |
+  |                                      |
+  |     Alfalite Reasearch, Control,     |
+  |       and Operations Network         |
+  |                                      |
+  |[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]|
+
+This is the Alfalite Research, Control, and Operations Network for starships. This system is intended to fully operate a starship with more functionality, precision, and features than a regular human crew.
+
+This shell has [CREW] level control. Various starship systems may be monitored and some can be changed but and [ADMIN] level user is required for some operations.
+
+The ARCON shell also features functionality for file directory editing, file reading/writing, and other basic system functions.
+
+{INSTRUCTIONS}
+
+This is a console application, meaning that you must interact using a command-line interface. To interact with the system, send commands. Here is a list of all essential commands:
+
+FILE SYSTEM COMMANDS:
+
+cd      - change or display the current working directory (CDW)
+ls      - list all items in the CWD
+mkdir   - create a new folder in the CWD
+concat  - create a new file with the given extension in the CWD
+open    - blanket command for all file editing Allows for 
+            read   - lists, line by line, all content of the directed file
+            edit   - interactive line-by-line editor for an entire file
+            delete - deletes the directed file from the system. If it is a file essential to operation, like this file (info.txt) for example, it will be restored on next startup. 
+
+USER COMMANDS:
+
+login   - input a username and password of an existing user
+newacc  - create a new account with a username and password
+options - see a list of all user/system setting and change them.
+
+Arguments are placed after the command in this format:
+
+CMD [{essential args}, (optional args)]
+
+For example, reading a file in edit mode would be:
+open example.txt edit
+
+{OTHER INFORMATION}
+
+This program is created using a modified C# DOTNET framework. It uses C# and SQLite Databases.

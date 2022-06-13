@@ -1,0 +1,9 @@
+essential tasks being programmed now:
+
+- command interpretation with Program.Command()
+- File system control with FileSystem class
+- Databases for:
+    - user accounts
+    - settings
+    - starship systems (implemented later)
+    using Database class
