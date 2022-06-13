@@ -14,11 +14,20 @@ public class database
 
     public static void RunBasicCMD(string command)
     {
-
+        Cmd.CommandText = command;
+        Cmd.ExecuteNonQuery();
     }
 
-    public static void RunDataReader(string command)
+    public static List<object> RunDataReader(string command, string table)
     {
+        SQLiteCommand reader = new SQLiteCommand(command, Con);
+        SQLiteDataReader rdr = reader.ExecuteReader();
+
+        ResultSet rs = stmt.executeQuery($"SELECT * FROM {table}");
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int numberOfColumns = rsmd.getColumnCount();
+        
+        //read all lines and return a list
 
     }
 
