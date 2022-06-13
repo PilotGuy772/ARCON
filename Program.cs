@@ -18,6 +18,10 @@ class Program
         - set CWD to /files
         - call command function
         */
+
+        //initialize database
+        Database.Init();
+
     }
 
     private static void Command()

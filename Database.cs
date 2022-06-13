@@ -1,4 +1,4 @@
-public class database
+public class Database
 {
     /*
     the only access point to the SQLite database that holds all information and data not directly tied to the file system
@@ -9,7 +9,7 @@ public class database
 
     public static void Init()
     {
-
+        Con.Open();
     }
 
     public static void RunCMD(string command)
@@ -73,6 +73,15 @@ public class database
 
     public static void ResetDB()
     {
-      
+      //deletes the database completely
+      File.Delete(Path.GetFullPath(@"\arcon.db"));
+
+      //recreates the db and all tables
+      //use this for each new table made:
+
+      //RunCMD("CREATE TABLE <>(id INTEGER PRIMARY KEY, etc...)")
+
+      //table for event logs
+      RunCMD("CREATE TABLE log(id INTEGER PRIMARY KEY, error_code TEXT, error_desc TEXT, severity INTEGER, time TEXT)");
     }
 }
