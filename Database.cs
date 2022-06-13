@@ -1,7 +1,7 @@
 public class database
 {
     /*
-    the only access point to the SQLite database that holds all information and data not directly tied to the fily system
+    the only access point to the SQLite database that holds all information and data not directly tied to the file system
     */
 
     public static SQLiteConnection Con = new SQLiteConnection("arcon.db");
@@ -12,27 +12,67 @@ public class database
 
     }
 
-    public static void RunBasicCMD(string command)
+    public static void RunCMD(string command)
     {
         Cmd.CommandText = command;
         Cmd.ExecuteNonQuery();
     }
 
-    public static List<object> RunDataReader(string command, string table)
+    class DataReader
     {
-        SQLiteCommand reader = new SQLiteCommand(command, Con);
-        SQLiteDataReader rdr = reader.ExecuteReader();
 
-        ResultSet rs = stmt.executeQuery($"SELECT * FROM {table}");
-        ResultSetMetaData rsmd = rs.getMetaData();
-        int numberOfColumns = rsmd.getColumnCount();
+      SQLiteCommand reader;
+      SQLiteDataReader rdr;
+      
+      public static RunDataReader(string command, string table)
+      {      
+        //opens the data table for reading
+        reader = new SQLiteCommand(command, Con);
+        rdr = reader.ExecuteReader();      
+      }
+  
+      public static List<object> AdvanceReader(string[] dataTypes)
+      {
         
-        //read all lines and return a list
+        List<object> returnList = new List<object>();
+        
+        if(rdr.Read())
+        {
+          
+          for(int i; i <= dataTypes.Length; i++)
+          {
+            
+            if(dataTypes[i] == "string"){
+              
+              returnList.Add(rdr.GetString(i));
+            
+            }else if(dataTypes[i] == "int"){
+              
+              returnList.Add(rdr.GetInt32(i))
+            
+            }
+          
+          }
+        }else{
+          
+          return null;
+        
+        }
 
-    }
+        return returnList;
+        
+      }
+
+      public static void CloseReader()
+      {
+        reader = null;
+        rdr = null;
+      }
+    }  
+      
 
     public static void ResetDB()
     {
-
+      
     }
 }
