@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "h:\\programs\\ARCON\\ARCON.csproj": {}
+    "H:\\programs\\ARCON\\ARCON.csproj": {}
   },
   "projects": {
-    "h:\\programs\\ARCON\\ARCON.csproj": {
+    "H:\\programs\\ARCON\\ARCON.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "h:\\programs\\ARCON\\ARCON.csproj",
+        "projectUniqueName": "H:\\programs\\ARCON\\ARCON.csproj",
         "projectName": "ARCON",
-        "projectPath": "h:\\programs\\ARCON\\ARCON.csproj",
+        "projectPath": "H:\\programs\\ARCON\\ARCON.csproj",
         "packagesPath": "C:\\Users\\Laeth\\.nuget\\packages\\",
-        "outputPath": "h:\\programs\\ARCON\\obj\\",
+        "outputPath": "H:\\programs\\ARCON\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,10 +44,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.1, )"
-            },
             "System.Data.SQLite": {
               "target": "Package",
               "version": "[1.0.116, )"

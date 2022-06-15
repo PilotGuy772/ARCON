@@ -11,7 +11,6 @@ H:\programs\ARCON\bin\Debug\net6.0\ARCON.pdb
 H:\programs\ARCON\bin\Debug\net6.0\EntityFramework.SqlServer.dll
 H:\programs\ARCON\bin\Debug\net6.0\EntityFramework.dll
 H:\programs\ARCON\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-H:\programs\ARCON\bin\Debug\net6.0\Newtonsoft.Json.dll
 H:\programs\ARCON\bin\Debug\net6.0\System.Data.SQLite.dll
 H:\programs\ARCON\bin\Debug\net6.0\System.CodeDom.dll
 H:\programs\ARCON\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll

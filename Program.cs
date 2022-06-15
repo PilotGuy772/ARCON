@@ -6,9 +6,6 @@ global using System.Windows.Forms;
 
 class Program
 {
-
-    private static string? LastCommand;
-
     public static void Main()
     {        
         /*
@@ -19,8 +16,19 @@ class Program
         - call command function
         */
 
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\n\n\n\nWELCOME TO THE ARCON SHELL");
+        Console.WriteLine("Setting up...");
+
+        
         //initialize database
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Initializing database...");
         Database.Init();
+
+        //finally, call the auto-looping command method  
+        Console.WriteLine("Setting up command interpreter...\n\n");
+        Command();
 
     }
 
@@ -42,12 +50,28 @@ class Program
         Console.ForegroundColor = ConsoleColor.White;
 
         //switch case to move thread to another .cs file
-        switch(args)
+        switch(args[0])
         {
-            default:
+            case "kill":
+                Log.LogItem(false, "SY-001", "SYSTEM SHUTDOWN: prompted by: Program.Command(), expected: true", 1);
+                Console.WriteLine("Closing database...");
+                Database.UnInit();
+
+                //garbaj colleckshun
+                Console.WriteLine("Clearing memory...");
+                GC.Collect();
+                GC.WaitForFullGCComplete();
                 
+                //bye-bye program
+                Console.WriteLine("Exiting program...");
+                Environment.Exit(0);
+                break;
+            default:     
+                Log.LogItem(true, "AC-CMD-001", $"COMMAND NOT FOUND: {args[0]}", 2);
                 break;
         }
+
+    Command();
 
     }
 }

@@ -9,28 +9,25 @@ class Log
     public DateTime LogTime      {get; set;}
     //meant to be entered into a SQLite table
 
-    public static void LogItem(string errorCode, string errorDesc, int severity)
+    public static void LogItem(bool logToConsole, string errorCode, string errorDesc, int severity)
     {
         Log newLog = new Log() 
         {
-            ID = 0,
+            ID        = 0,
             ErrorCode = errorCode,
             ErrorDesc = errorDesc,
-            Severity = severity,
-            LogTime = DateTime.Now,
+            Severity  = severity,
+            LogTime   = DateTime.Now,
         };
 
-        Database.RunCMD($"INSERT INTO log(error_code, error_desc, severity, time) VALUES({newLog.ErrorCode}, {newLog.ErrorDesc}, {newLog.Severity}, {Convert.ToString(newLog.LogTime)})");
-
-    }
-
-    public static void LogWarn(string errorCode, string errorDesc)
-    {
-
-    }
-
-    public static void LogInfo(string errorCode, string errorDesc)
-    {
+        if(logToConsole)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine($"    [EXCEPTION] {newLog.ErrorCode}; {newLog.ErrorDesc}");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        
+        Database.RunCMD($"INSERT INTO log(error_code, error_desc, severity, time) VALUES('{newLog.ErrorCode}', '{newLog.ErrorDesc}', {newLog.Severity}, '{Convert.ToString(newLog.LogTime)}')");
 
     }
 }

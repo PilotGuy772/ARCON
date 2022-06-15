@@ -31,32 +31,52 @@ The ARCON shell also features functionality for file directory editing, file rea
 
 {INSTRUCTIONS}
 
-This is a console application, meaning that you must interact using a command-line interface. To interact with the system, send commands. Here is a list of all essential commands:
+  This is a console application, meaning that you must interact using a command-line interface. To interact with the system, send commands. Here is a list of all essential commands:
 
-FILE SYSTEM COMMANDS:
+  cmd     - params                           - description
 
-cd      - change or display the current working directory (CDW)
-ls      - list all items in the CWD
-mkdir   - create a new folder in the CWD
-concat  - create a new file with the given extension in the CWD
-open    - blanket command for all file editing Allows for 
-            read   - lists, line by line, all content of the directed file
-            edit   - interactive line-by-line editor for an entire file
-            delete - deletes the directed file from the system. If it is a file essential to operation, like this file (info.txt) for example, it will be restored on next startup. 
+  FILE SYSTEM COMMANDS:
+  dir     - [(path)]                         - change or display the current working directory (CDW)
+  li      - [(filter)]                       - list all items in the CWD
+  nd      - [{name}]                         - create a new folder in the CWD
+  concat  - [{name}, {extension}, (editNow)] - create a new file with the given extension in the CWD
+  open    - [{name.ext}, {mode}]             - blanket command for all file editing
+  |       |                                  |
+  CORE/SYSTEM COMMANDS:                      |
+  kill    - [{none}]                         - terminates the program
+    
 
-USER COMMANDS:
+    Arguments are placed after the command in this format:
 
-login   - input a username and password of an existing user
-newacc  - create a new account with a username and password
-options - see a list of all user/system setting and change them.
+    CMD [{essential args}, (optional args)]
 
-Arguments are placed after the command in this format:
+    For example, reading a file in edit mode would be:
+    open example.txt edit
 
-CMD [{essential args}, (optional args)]
+{TROUBLESHOOTING}
 
-For example, reading a file in edit mode would be:
-open example.txt edit
+  ERROR CODES:
+    Most problems are accompanied by an error code. This error code usually tells you what's wrong, so pay attention to them. Here's a comprehensive list of all general error codes. 
+    Error codes also have a severity level attached. 2 means it is an exception and the program will continue as normal. 3 means it is an error and the current process will terminate.
+
+    COMMAND ERRORS:
+    
+      AC-CMD-001; COMMAND NOT FOUND: {input}
+      AC-CMD-002; IMPROPER ARGUMENTS: given: {#}, expected: {#}
+    
+    FILE SYSTEM ERRORS:
+
+      AC-FLSYS-001; FILE NOT FOUND: {file path}
+      AC-FLSYS-002; DIRECTORY NOT FOUND: {directory path}
+      AC-FLSYS-003; EXTENSION NOT SUPPORTED: {requested extension} (most extensions are supported. Only those that can't be written as text like .db and .dll aren't.)
+
+  INFO CODES:
+    Info codes are similar to error codes, except they denote expected and normal information instead of exceptions and errors. There are more info codes than error codes and they are similar. This is not a comprehensive list. Probably.
+
+    SYSTEM/CORE CODES:
+      SY-001; SYSTEM SHUTDOWN: prompted by: {prompting method. Probably from user.}, exptected: {true/false}
+
 
 {OTHER INFORMATION}
 
-This program is created using a modified C# DOTNET framework. It uses C# and SQLite Databases.
+  This program is created using a modified C# DOTNET framework. It uses C# and SQLite Databases.
