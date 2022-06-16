@@ -3,6 +3,7 @@
 global using System;
 global using System.Data.SQLite;
 global using System.Windows.Forms;
+global using System.IO;
 
 class Program
 {
@@ -24,7 +25,7 @@ class Program
         //initialize database
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Initializing database...");
-        Database.Init();
+        Database.Con.Open();
 
         //finally, call the auto-looping command method  
         Console.WriteLine("Setting up command interpreter...\n\n");
@@ -54,24 +55,36 @@ class Program
         {
             case "kill":
                 Log.LogItem(false, "SY-001", "SYSTEM SHUTDOWN: prompted by: Program.Command(), expected: true", 1);
-                Console.WriteLine("Closing database...");
-                Database.UnInit();
-
-                //garbaj colleckshun
-                Console.WriteLine("Clearing memory...");
-                GC.Collect();
-                GC.WaitForFullGCComplete();
-                
-                //bye-bye program
-                Console.WriteLine("Exiting program...");
-                Environment.Exit(0);
+                Shutdown();
+                break;
+            case "dir":
+                FileSystem.ChDir(args);
+                break;
+            case "li":
+                FileSystem.ListDir();
                 break;
             default:     
                 Log.LogItem(true, "AC-CMD-001", $"COMMAND NOT FOUND: {args[0]}", 2);
                 break;
         }
-
+    
     Command();
 
     }
+
+    public static void Shutdown()
+    {       
+        Console.WriteLine("Closing database...");
+        Database.UnInit();
+
+        //garbaj colleckshun
+        Console.WriteLine("Clearing memory...");
+        GC.Collect();
+        GC.WaitForFullGCComplete();
+        
+        //bye-bye program
+        Console.WriteLine("Exiting program...");
+        Environment.Exit(0);
+    }
+
 }
