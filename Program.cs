@@ -26,6 +26,7 @@ class Program
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Initializing database...");
         Database.Con.Open();
+        Database.RestoreDB();
 
         //finally, call the auto-looping command method  
         Console.WriteLine("Setting up command interpreter...\n\n");
@@ -61,7 +62,16 @@ class Program
                 FileSystem.ChDir(args);
                 break;
             case "li":
-                FileSystem.ListDir();
+                FileSystem.ListDir(true);
+                break;
+            case "concat":
+                FileSystem.ConcatFile(args);
+                break;
+            case "open":
+                FileSystem.Open.Command(args);
+                break;
+            case "nd":
+                FileSystem.NewDir(args);
                 break;
             default:     
                 Log.LogItem(true, "AC-CMD-001", $"COMMAND NOT FOUND: {args[0]}", 2);

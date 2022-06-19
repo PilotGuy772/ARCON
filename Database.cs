@@ -30,6 +30,6 @@ public class Database
     {
       //RunCMD("CREATE TABLE <>(id INTEGER PRIMARY KEY, etc...)")
       //table for event logs
-      RunCMD("CREATE TABLE log(id INTEGER PRIMARY KEY, error_code TEXT, error_desc TEXT, severity INTEGER, time TEXT)");
+      RunCMD("CREATE TABLE IF NOT EXISTS log(id INTEGER PRIMARY KEY, error_code TEXT, error_desc TEXT, severity INTEGER, time TEXT)");
     }
 }

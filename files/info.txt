@@ -44,6 +44,7 @@ The ARCON shell also features functionality for file directory editing, file rea
   |       |                                  |
   CORE/SYSTEM COMMANDS:                      |
   kill    - [{none}]                         - terminates the program
+  help    - [(full or commands only)]        - In commands only mode, prints a list of all accepted commands. In full mode, prints a full manual of use. Default commands only.
     
 
     Arguments are placed after the command in this format:
@@ -52,6 +53,25 @@ The ARCON shell also features functionality for file directory editing, file rea
 
     For example, reading a file in edit mode would be:
     open example.txt edit
+
+{TEXT / FILE OPERATIONS}
+
+  One major way to interact with the ARCON system is through editing files and directories. The Current Working Directory, AKA CWD, is effectively like your 'cursor'. Your 'cursor' is inside of a folder (aka directory) and can see all of the other folders and files in that directory.
+  You can change and see the directory with the 'dir' command. 
+  You can see all of the files and folders in the CWD with the 'li' command.
+
+  But what if you want a new directory or file?
+  Making directories is easy, just use the 'nd' command.
+  For files, however, you must use the 'concat' command.
+  Then you must specify the file to write and whether you would like to give the file a starting value.
+  If you DO choose to edit the file right away, simply type what you would like to put in each line one at a time and then press enter to confirm. You may add as much as you like. To exit, simply input a line that has the content "<EXIT>" and nothing more. This will not appear in the final file.\
+
+  To edit a text based file after its creation, use the open command. You must specify the name of the file and the mode.
+    There are four possible modes of opening. 
+    1) info: this displays info like file size, last modification, location, and file type
+    2) edit: this enters the user into an interactoive line-by-line editor like described earlier.
+    3) del: this deletes the file from the disk
+    4) read: this displays the contents of the file one line at a time.
 
 {TROUBLESHOOTING}
 
@@ -68,13 +88,16 @@ The ARCON shell also features functionality for file directory editing, file rea
 
       AC-FLSYS-001; FILE NOT FOUND: {file path}
       AC-FLSYS-002; DIRECTORY NOT FOUND: {directory path}
-      AC-FLSYS-003; EXTENSION NOT SUPPORTED: {requested extension} (most extensions are supported. Only those that can't be written as text like .db and .dll aren't.)
+      AC-FLSYS-004; FILE ALREADY EXISTS: {requested file to create}
 
   INFO CODES:
     Info codes are similar to error codes, except they denote expected and normal information instead of exceptions and errors. There are more info codes than error codes and they are similar. This is not a comprehensive list. Probably.
 
     SYSTEM/CORE CODES:
-      SY-001; SYSTEM SHUTDOWN: prompted by: {prompting method. Probably from user.}, exptected: {true/false}
+      SY-001; SYSTEM SHUTDOWN: prompted by: {prompting method}, expected: {true/false}
+    FILE SYSTEM CODES:
+      FL-001; FILE ADDED: {file name}
+      FL-002; FILE DELETED: {file name}
 
 
 {OTHER INFORMATION}
